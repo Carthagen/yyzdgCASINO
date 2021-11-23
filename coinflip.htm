@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+ 
+    <title> - Онлайн лотерея</title>
+    
+	<meta content=" Сервис быстрых лотерей оригинал, Играйте и выигрывайте! Захватывающая онлайн игра с выводом реальных денег, которая увлечет всех" name="description">
+	<meta content="Игры,  дабл, дайс, баттл, джекпот, рулетка на деньги" name="keywords">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<meta content="zqmGVCbinLIejCN8dTpyW3UDhisbJXFIKvSyB64Z" name="csrf-token">
+   	<script type="text/javascript" src="lotto/script.js"></script>
+
+    
+	</head>
+	
+<body>
+
+	<!-- Навигация -->
+
+	<div class="content" id="coinflip">
+		<div class="main-width" style="transition: all 0.5s ease 0s;">
+			<!-- <script src="Coinflip_files/coin.js"></script>--> 
+            <div class="head-game">
+	               <span class="game-name">PvP</span>
+            </div>
+            <div class="game-info" >
+	            <span class="fair" rel="popup" data-popup="popup-fair">Честная игра</span>
+            </div>
+            <div class="coin">
+	        	<div class="second-title"><span>Создать новую игру</span></div>
+	                <div class="bet-input">
+	                	<div class="value">
+		                	<input type="number" id="amount" placeholder="Введите ставку">
+			                <i class="fas fa-coins"></i>
+		                </div>
+                		<div class="upper">
+                			<a data-value="1" data-method="plus">+1</a>
+                			<a data-value="10" data-method="plus">+10</a>
+                			<a data-value="100" data-method="plus">+100</a>
+                			<a data-value="1000" data-method="plus">+1000</a>
+                			<a data-method="last"><i class="fas fa-sync-alt"></i></a>
+                			<a data-method="clear"><i class="fas fa-trash-alt"></i></a>
+                		</div>
+                        <a class="makeBet" onclick="createRoom()">Создать</a>
+                	</div>
+		            <div class="second-title"><span>Активные игры</span></div>
+	                    <ul class="games">
+	                        
+	                       
+			            </ul>
+			            
+	                <div class="second-title"><span>Завершенные игры</span></div>
+	                    <ul class="last">
+			            </ul>
+            </div>
+		</div>
+	</div>
+	<!-- <div class="fixed-chat" style="transition: all 0.5s ease 0s;">
+		<i class="far fa-comments icon"></i>
+		<a class="btn-toggle3"></a>
+		<div class="heading">
+			ОНЛАЙН ЧАТ
+		</div>
+		<div class="messages">
+			<div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 727px;"><div class="scroller" style="overflow: hidden; width: auto; height: 727px;">
+							</div><div class="slimScrollBar" style="background: rgb(0, 0, 0) none repeat scroll 0% 0%; width: 5px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 727px;"></div><div class="slimScrollRail" style="width: 5px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51) none repeat scroll 0% 0%; opacity: 0.2; z-index: 90; right: 1px;"></div></div>
+		</div>
+				<div class="send-form"> -->
+			<!-- <div class="chat-smiles">
+				<div class="chat-smiles-box">
+					<div class="chat-smile">😀</div>
+					<div class="chat-smile">😂</div>
+					<div class="chat-smile">😄</div>
+					<div class="chat-smile">😅</div>
+					<div class="chat-smile">😆</div>
+					<div class="chat-smile">😉</div>
+					<div class="chat-smile">😋</div>
+					<div class="chat-smile">😎</div>
+					<div class="chat-smile">😍</div>
+					<div class="chat-smile">😘</div>
+					<div class="chat-smile">😐</div>
+					<div class="chat-smile">😶</div>
+					<div class="chat-smile">😣</div>
+					<div class="chat-smile">😫</div>
+					<div class="chat-smile">😜</div>
+					<div class="chat-smile">😓</div>
+					<div class="chat-smile">😧</div>
+				</div>
+			</div> 
+			<input type="text" class="chat-input" placeholder="Введите сообщение">
+			 <a class="btn-emoji"><i class="far fa-smile"></i></a> 
+			<a class="btn-send"><i class="fab fa-telegram-plane"></i></a>
+		</div>
+			</div> -->
+
+<!-- <div class="overlay">
+		<div class="popup popup-pay">
+    	<a class="close"></a>
+        <div class="heading">Пополнить баланс</div>
+        <input type="text" id="pay_summ" class="input-sum" name="num" placeholder="Введите сумму">
+        <div class="sum-info">Минимальная сумма: 1р</div>
+        <div class="sum-info">Максимальная сумма: 15000р</div><br><br>
+        <div class="sum-info">Вы получите монет: <font id="monet">0</font> </div>
+        <button type="button" id="pay_new" class="btn-second">ОПЛАТИТЬ</button>
+    </div>
+
+    <div class="popup popup-withdraw">
+    	<a class="close"></a>
+        <div class="heading">Вывод средств</div>
+		<div class="important">ВЫВОД ДОСТУПЕН ПОСЛЕ ПОПОЛНЕНИЯ СЧЕТА НА 50 РУБЛЕЙ!</div>
+        <div class="important">Обработка вывода обычно осуществляется в течении часа. В некоторых случаях платеж может быть
+		обработан до 24 часов. Минимальная сумма к выводу <b id="min_wid">1050</b> монет</div>
+        <h3>Выберите платежную систему</h3>
+        <div class="list-pay clear">
+        	<a class="item active" data-type="qiwi"><img src="Coinflip_files/img-qiwi.png" alt=""></a>
+        	<a class="item" data-type="yandex"><img src="Coinflip_files/img-yandex.png" alt=""></a>
+        	<a class="item" data-type="webmoney"><img src="Coinflip_files/img-webm.png" alt=""></a>
+        	<a class="item" data-type="visa"><img src="Coinflip_files/img-visa.png" alt=""></a>
+        </div>
+       	<div class="with-inputs">
+       		<div class="params">
+				<h3>Сумма</h3>
+				<input type="text" class="input-sum" id="value" placeholder="Мин. сумма: 1050 монет">
+			</div>
+			<div class="params">
+				<h3>Номер кошелька</h3>
+				<input type="text" class="input-num" id="wallet" placeholder="7900xxxxxxx">
+			</div>
+       	</div>
+        <div class="contcom">
+			<span class="coms1">
+				Комиссия: <p class="right coms1" id="com">4% + 1руб.</p>
+			</span>
+			<span class="coms1 bold">
+				ИТОГ К ПОЛУЧЕНИЮ: <p class="right coms1 bold" id="valwithcom">0.00 руб.</p>
+			</span>
+			<div class="clear"></div>
+		</div>
+       	<div class="check_rules">
+			<input id="chh" type="checkbox">
+			<label class="check" for="chh">Я подтверждаю правильность введенных данных</label>
+       	</div>
+        <input id="withdraw" type="submit" class="btn-second" value="ВЫВЕСТИ" readonly="readonly" disabled="disabled">
+    </div>
+		<div class="popup popup-fair">
+    	<a class="close"></a>
+        <div class="heading">ЧЕСТНАЯ ИГРА</div>
+        <div id="accordion" class="ui-accordion ui-widget ui-helper-reset" role="tablist">
+        	<h3 class="fair-title ui-accordion-header ui-corner-top ui-state-default ui-accordion-header-active ui-state-active ui-accordion-icons" role="tab" id="ui-id-1" aria-controls="ui-id-2" aria-selected="true" aria-expanded="true" tabindex="0"><span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-s"></span>Что такое "Честная игра"?</h3>
+			<ol class="decimal-list ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content ui-accordion-content-active" style="display: block;" id="ui-id-2" aria-labelledby="ui-id-1" role="tabpanel" aria-hidden="false">
+				<li><b>Честная игра</b> - это уникальная система проверки честности игры.</li>
+			</ol>
+			<h3 class="fair-title ui-accordion-header ui-corner-top ui-accordion-header-collapsed ui-corner-all ui-state-default ui-accordion-icons" role="tab" id="ui-id-3" aria-controls="ui-id-4" aria-selected="false" aria-expanded="false" tabindex="-1"><span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Как проверить результаты игры на честность?</h3>
+			<ol class="decimal-list ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content" style="display: none;" id="ui-id-4" aria-labelledby="ui-id-3" role="tabpanel" aria-hidden="true">
+				<li>Перед игрой скопруйте хэш, после окончания игры Вы можете проверить хэш на <a href="https://lottowins.ru/fair">странице проверки</a>.</li>
+				<li>Так же любую игру можно легко проверить на честность, для этого 
+просто нажмите кнопку "Проверить" (кнопки отображаются в конце игры или 
+найти их в истории игр).</li>
+			</ol>
+        </div>
+    </div>
+</div> -->
+
+
+</body></html>

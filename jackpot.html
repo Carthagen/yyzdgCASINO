@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+    <title>Онлайн лотерея</title>
+  <!--   
+	<meta content=" Сервис быстрых лотерей оригинал, Играйте и выигрывайте! Захватывающая онлайн игра с выводом реальных денег, которая увлечет всех" name="description">
+	<meta content="Игры,  дабл, дайс, баттл, джекпот, рулетка на деньги" name="keywords">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<meta content="pc2umhMiSzjLtjLhnvfWvgRMBFWDcHnG2rjEDmmH" name="csrf-token">
+ -->
+ <script src="lotto/socket.js"></script>
+ <script src="lotto/jackpot.js"></script>
+	</head>
+<body>
+	
+			<div class="head-game">
+				<span class="game-name">Double</span>
+				<ul>
+					<li><a href="">История</a></li>
+				</ul>
+			</div>
+	
+			<div class="double-loop" id="jackpot">
+				
+				
+				
+					<div class="head-game">
+				<span class="game-name">Jackpot</span>
+				<ul>
+					<li><a href="">История</a></li>
+				</ul>
+			</div>
+			<div class="game-info">
+				<div class="game-id">Игра: <span id="roundId_small">#48</span></div><span class="fair" rel="popup" data-popup="popup-fair">Честная игра</span>
+			</div>
+			<div class="rooms">
+				<div class="rooms-title">Выберите комнату</div>
+				<div class="rooms-desc">Сделай ставку и получи возможность выиграть Джекпот</div>
+				<ul class="room-selector">
+							<li class="room major">
+						<a href="">
+							<div class="room-name">Мажор</div>
+							<div class="room-bet">от 100-10000 <i class="fas fa-coins"></i></div>
+							<div class="room-bank">Банк: <span id="roombank_major">0</span> <i class="fas fa-coins"></i></div>
+						</a>
+					</li>
+							<li class="room classic">
+						<a href="">
+							<div class="room-name">Классик</div>
+							<div class="room-bet">от 10-5000 <i class="fas fa-coins"></i></div>
+							<div class="room-bank">Банк: <span id="roombank_classic">21</span> <i class="fas fa-coins"></i></div>
+						</a>
+					</li>
+							<li class="room small active">
+						<a href="">
+							<div class="room-name">Бомж</div>
+							<div class="room-bet">от 1-300 <i class="fas fa-coins"></i></div>
+							<div class="room-bank">Банк: <span id="roombank_small">0</span> <i class="fas fa-coins"></i></div>
+						</a>
+					</li>
+				</ul>
+			</div>
+			
+			<div class="jackpot">
+				<div class="bank">Jackpot сейчас: <span id="gamebank_small">0</span><i class="fas fa-coins"></i></div>
+				<div class="second-title"><span>Игроки</span></div>
+				<ul class="chances kinetic-active" id="chances_small" style="cursor: pointer;">
+					</ul>
+				<div class="timer">
+					<div class="timer-title">До начала</div>
+					<div class="timer-bar">
+						<div class="time">
+							<div class="elements">
+								<span class="minsec" id="time_small">00:30</span>
+								<!--<span class="ms">.000</span>-->
+							</div>
+						</div>
+						<span class="timer-bar-fill" style="width: 100%" id="timeline_small"></span>
+					</div>
+				</div>
+				<div class="hash">HASH: <span id="hash_small">4617b2be5f76dc87207c184097f3c474</span></div>
+				<div class="bet-input">
+					<div class="value">
+						<input type="text" id="amount" placeholder="Введите ставку">
+						
+					</div>
+					<div class="upper">
+						<a data-value="1" data-method="plus">+1</a>
+						<a data-value="10" data-method="plus">+10</a>
+						<a data-value="100" data-method="plus">+100</a>
+						<a data-value="1000" data-method="plus">+1000</a>
+						<a data-method="last"><i class="fa fa-refresh" aria-hidden="true"></i></a>
+						<a data-method="clear"><i class="fa fa-trash" aria-hidden="true"></i></a>
+					</div>
+					<a class="makeBet">Поставить</a>
+				</div>
+				<div class="winner" id="winnerBox_small" style="display: none;">
+					<div class="second-title"><span>Победитель!</span></div>
+					<ul>
+						<li>
+							<div class="chance-w">
+								<span class="titles">Шанс выигрыша</span>
+								<span class="chance" id="winnerChance_small">0%</span>
+							</div>
+						</li>
+						<li>
+							<div class="winner-w">
+								<div class="ava"><img src="lotto/no_avatar.jpg" alt="" id="winnerAvatar_small"></div>
+								<div class="nickname" id="winnerName_small">none</div>
+								<div class="points">Выигрыш: <b id="winnerSum_small">0</b> <i class="fas fa-coins"></i></div>
+							</div>
+						</li>
+						<li>
+							<div class="ticket-w">
+								<span class="titles">Счастливый билет</span>
+								<span class="ticket"><i class="fas fa-ticket-alt"></i> <b id="winnerTicket_small">0</b></span>
+							</div>
+						</li>
+					</ul>
+					<div class="check-random">
+						<a id="check_small" href="#" class="btn btn-white btn-sm btn-right">Проверить</a>
+					</div>
+				</div>
+				<div class="chouser" id="chouser_small" style="display: none;">
+					<div class="second-title"><span>Выбираем победителя</span></div>
+					<div class="carousel" id="carousel_small"></div>
+					<div class="picker"></div>
+				</div>
+				<div class="second-title"><span>Ставки в этой игре</span></div>
+				<ul class="bets" id="bets_small"></ul>
+			</div>
+			</div>
+		</div>
+	</div>
+	<div class="fixed-chat">
+		<i class="far fa-comments icon"></i>
+		<a class="btn-toggle3"></a>
+		<div class="heading">
+			ОНЛАЙН ЧАТ
+		</div>
+		<div class="messages">
+			<div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 621px;"><div class="scroller" style="overflow: hidden; width: auto; height: 621px;"></div>
+			<div class="slimScrollBar" style="background: rgb(0, 0, 0); width: 5px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 621px;"></div>
+			<div class="slimScrollRail" style="width: 5px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div></div>
+		</div>
+	</div>
+
+<div class="overlay">
+		<div class="popup popup-fair">
+    	<a class="close"></a>
+        <div class="heading">ЧЕСТНАЯ ИГРА</div>
+        <div id="accordion" class="ui-accordion ui-widget ui-helper-reset" role="tablist">
+        	<h3 class="fair-title ui-accordion-header ui-corner-top ui-state-default ui-accordion-header-active ui-state-active ui-accordion-icons" role="tab" id="ui-id-1" aria-controls="ui-id-2" aria-selected="true" aria-expanded="true" tabindex="0"><span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-s"></span>Что такое "Честная игра"?</h3>
+			<ol class="decimal-list ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content ui-accordion-content-active" id="ui-id-2" aria-labelledby="ui-id-1" role="tabpanel" aria-hidden="false" style="display: block;">
+				<li><b>Честная игра</b> - это уникальная система проверки честности игры.</li>
+			</ol>
+			<h3 class="fair-title ui-accordion-header ui-corner-top ui-accordion-header-collapsed ui-corner-all ui-state-default ui-accordion-icons" role="tab" id="ui-id-3" aria-controls="ui-id-4" aria-selected="false" aria-expanded="false" tabindex="-1"><span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Как проверить результаты игры на честность?</h3>
+			<ol class="decimal-list ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content" id="ui-id-4" aria-labelledby="ui-id-3" role="tabpanel" aria-hidden="true" style="display: none;">
+				<li>Перед игрой скопруйте хэш, после окончания игры Вы можете проверить хэш на <a href="">странице проверки</a>.</li>
+				<li>Так же любую игру можно легко проверить на честность, для этого просто нажмите кнопку "Проверить" (кнопки отображаются в конце игры или найти их в истории игр).</li>
+			</ol>
+        </div>
+    </div>
+</div>
+
+
+</body></html>
